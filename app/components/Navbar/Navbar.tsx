@@ -176,10 +176,10 @@ export default function Navbar() {
                 Contact{" "}
               </a>
 
-              <div className="relative inline-flex items-center justify-center group">
+              <div className="flex space-x-5">
                 {!auth?.accessToken && (
-                  <div>
-                    <div className="relative hidden md:items-center md:justify-center md:inline-flex group">
+                  <div className="flex space-x-5">
+                    <div className="relative  md:items-center md:justify-center md:inline-flex group">
                       <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
                       <a
                         href="/auth/signup"
@@ -191,7 +191,7 @@ export default function Navbar() {
                         SignUp{" "}
                       </a>
                     </div>
-                    <div className="relative hidden md:items-center md:justify-center md:inline-flex group">
+                    <div className="relative  md:items-center md:justify-center md:inline-flex group">
                       <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
                       <a
                         href="/auth/login"
@@ -207,7 +207,7 @@ export default function Navbar() {
                 )}
                 {auth?.accessToken && (
                   <button onClick={auth?.logout}>
-                    <div className="relative hidden md:items-center md:justify-center md:inline-flex group">
+                    <div className="relative md:items-center md:justify-center md:inline-flex group">
                       <div className="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
                       <a
                         href="/auth/login"
