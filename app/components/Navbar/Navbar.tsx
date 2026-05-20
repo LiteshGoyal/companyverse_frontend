@@ -80,7 +80,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href="#"
+              href="/contact"
               title=""
               className="text-lg font-normal text-gray-400 transition-all duration-200 hover:text-white hover:scale-110"
             >
@@ -140,35 +140,35 @@ export default function Navbar() {
         {expanded && (
           <nav className="md:hidden">
             <div className="flex flex-col pt-8 pb-4 space-y-6">
-              <a
-                href="#"
+              <Link
+                href="/"
                 title=""
                 className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white hover:scale-110"
               >
                 {" "}
                 Home{" "}
-              </a>
+              </Link>
 
-              <a
-                href="#"
+              <Link
+                href="/dashboard"
                 title=""
                 className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white hover:scale-110"
               >
                 {" "}
-                Features{" "}
-              </a>
+                Dashboard{" "}
+              </Link>
 
-              <a
-                href="#"
+              <Link
+                href="/company"
                 title=""
                 className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white hover:scale-110"
               >
                 {" "}
                 Companies{" "}
-              </a>
+              </Link>
 
               <a
-                href="#"
+                href="/contact"
                 title=""
                 className="text-base font-normal text-gray-400 transition-all duration-200 hover:text-white hover:scale-110"
               >

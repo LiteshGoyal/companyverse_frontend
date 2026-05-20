@@ -35,19 +35,19 @@ export default function Footer() {
 
                             <ul className="mt-6 space-y-4">
                                 <li>
-                                    <a href="#" title="" className="flex text-base font-normal text-gray-400 transition-all transform hover:text-white duration hover:translate-x-1"> About </a>
+                                    <a href="#about" title="" className="flex text-base font-normal text-gray-400 transition-all transform hover:text-white duration hover:translate-x-1"> About </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" className="flex text-base font-normal text-gray-400 transition-all transform hover:text-white duration hover:translate-x-1"> Features </a>
+                                    <a href="#FeaturesSection" title="" className="flex text-base font-normal text-gray-400 transition-all transform hover:text-white duration hover:translate-x-1"> Features </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" className="flex text-base font-normal text-gray-400 transition-all transform hover:text-white duration hover:translate-x-1"> Companies </a>
+                                    <a href="/companies" title="" className="flex text-base font-normal text-gray-400 transition-all transform hover:text-white duration hover:translate-x-1"> Companies </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" title="" className="flex text-base font-normal text-gray-400 transition-all transform hover:text-white duration hover:translate-x-1"> Contact </a>
+                                    <a href="/contact" title="" className="flex text-base font-normal text-gray-400 transition-all transform hover:text-white duration hover:translate-x-1"> Contact </a>
                                 </li>
                             </ul>
                         </div>
