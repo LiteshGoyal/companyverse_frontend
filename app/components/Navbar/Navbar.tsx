@@ -17,7 +17,7 @@ export default function Navbar() {
                 <Image
                   src="/logo-bgdark.png"
                   alt="logo"
-                  width="150"
+                  width="250"
                   height="50"
                 />
               </span>
