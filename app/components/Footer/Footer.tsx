@@ -23,7 +23,7 @@ export default function Footer() {
                 <p className="text-3xl font-normal text-white sm:text-4xl lg:text-5xl">CompanyVerse helps businesses connect, hire, and grow faster.</p>
                 <div className="relative inline-flex items-center justify-center mt-8 sm:mt-12 group">
                     <div className="absolute transition-all duration-200 rounded-md -inset-px bg-gradient-to-r from-cyan-500 to-purple-500 group-hover:shadow-lg group-hover:shadow-cyan-500/50"></div>
-                    <a href="#" title="" className="relative inline-flex items-center justify-center px-8 py-3 text-base font-normal text-white bg-black border border-transparent rounded-md" role="button"> Get Started Today </a>
+                    <a href="/dashboard" title="" className="relative inline-flex items-center justify-center px-8 py-3 text-base font-normal text-white bg-black border border-transparent rounded-md" role="button"> Get Started Today </a>
                 </div>
             </div>
 

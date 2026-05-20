@@ -8,7 +8,7 @@ export default function Navbar() {
   const auth = useContext(AuthContext);
   const [expanded, setExpanded] = useState(false);
   return (
-    <header className="py-4 bg-black sm:py-6" x-data="{expanded: false}">
+    <header className="py-4 bg-black sm:py-6 relative z-80 " x-data="{expanded: false} ">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div className="shrink-0">
