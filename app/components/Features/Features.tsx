@@ -3,10 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 
 interface AnimateOnScrollProps {
-  children: React.ReactNode;
   className?: string;
 }
-const Features = ({ children, className = "" }: AnimateOnScrollProps) => {
+const Features = ({ className = "" }: AnimateOnScrollProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
 
