@@ -7,6 +7,7 @@ import ProtectedRoute from "@/app/components/ProtectedRoute";
 import DashboardLayout from "@/app/components/dashboard/DashboardLayout";
 
 import { addEmployee } from "@/services/company.service";
+import { toast } from "sonner";
 
 export default function AddEmployeePage() {
   const router = useRouter();
@@ -34,8 +35,18 @@ export default function AddEmployeePage() {
       await addEmployee(formData);
 
       router.push("/employees");
-    } catch (error) {
+    } catch (error:any) {
       console.log(error);
+      if (error?.response?.status === 404) {
+        toast.error("No such employee exists");
+      }
+       else if(error?.response?.status===400) {
+        toast.error("Add employee failed", {
+          description: "User already belongs to a company",
+        });
+      }else{
+        toast.error("Some error Occured", {description:"Please try again after some time"})
+      }
     } finally {
       setLoading(false);
     }

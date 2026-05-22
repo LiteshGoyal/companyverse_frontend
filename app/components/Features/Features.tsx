@@ -1,6 +1,46 @@
-const Features = () => {
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
+interface AnimateOnScrollProps {
+  children: React.ReactNode;
+  className?: string;
+}
+const Features = ({ children, className = "" }: AnimateOnScrollProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const elementRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          // Optional: Disconnect the observer if you only want it to animate once
+          if (elementRef.current) observer.unobserve(elementRef.current);
+        }
+      },
+      {
+        root: null, // Defaults to the viewport
+        threshold: 0.1, // Triggers when 10% of the element is visible
+      }
+    );
+
+    const currentElement = elementRef.current;
+    if (currentElement) {
+      observer.observe(currentElement);
+    }
+
+    return () => {
+      if (currentElement) {
+        observer.unobserve(currentElement);
+      }
+    };
+  }, []);
   return (
-    <section id="FeaturesSection" className="py-12 bg-black sm:py-16 lg:py-20 xl:py-24">
+    <section
+      id="FeaturesSection"
+      className="py-12 bg-black sm:py-16 lg:py-20 xl:py-24"
+    >
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="max-w-2xl mx-auto text-center">
           <p className="text-sm font-normal tracking-widest uppercase">
@@ -9,7 +49,14 @@ const Features = () => {
               POWERFUL FEATURES{" "}
             </span>
           </p>
-          <h2 className="mt-6 text-3xl font-normal text-white sm:text-4xl lg:text-5xl xl:text-6xl">
+          <h2 ref={elementRef}
+            className={`mt-6 text-3xl font-normal text-white sm:text-4xl lg:text-5xl xl:text-6xl  transition-all duration-700 ease-out ${className} 
+                ${
+                  isVisible
+                    ? "translate-x-0 opacity-100"
+                    : "translate-x-20 opacity-0"
+                }`}
+          >
             Everything Your Company Needs In One Platform
           </h2>
           <p className="mt-6 text-lg font-normal text-gray-400">

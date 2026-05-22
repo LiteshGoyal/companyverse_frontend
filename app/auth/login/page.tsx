@@ -4,13 +4,13 @@ import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { loginUser } from "@/services/auth.service";
 import { AuthContext } from "@/context/AuthContext";
-import { getCurrentUser } from "@/services/auth.service"
+import { getCurrentUser } from "@/services/auth.service";
 import Image from "next/image";
+import { toast } from "sonner";
 
 export default function Login() {
   const router = useRouter();
-  const auth = useContext(AuthContext)
-  const [loginCredsWrong, setLoginCredsWrong] = useState(false)
+  const auth = useContext(AuthContext);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -31,23 +31,30 @@ export default function Login() {
 
     try {
       setLoading(true);
-      console.log(formData);
-      
-      
+
       const response = await loginUser(formData);
-      auth?.setAccessToken(response.access)
+      auth?.setAccessToken(response.access);
       localStorage.setItem("token", response.access);
 
-      const user = await getCurrentUser()
+      const user = await getCurrentUser();
 
-      auth?.setUser(user)
+      auth?.setUser(user);
 
-
-      console.log(response);
       router.push("/dashboard");
-    } catch (error) {
-      setLoginCredsWrong(true)
+      toast.success("Login successful", {
+        description: "Welcome back to CompanyVerse",
+      });
+    } catch (error: any) {
       console.log(error);
+      if (error?.response?.status === 401) {
+        toast.error("Wrong credentials", {
+          description: "Invalid email or password",
+        });
+      } else {
+        toast.error("Login failed", {
+          description: "Something went wrong. Please try again later.",
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -61,7 +68,9 @@ export default function Login() {
             <Image
               className=" mx-auto lg:mx-0"
               src="/logo-bglight.png"
-              alt="" width="200" height="100"
+              alt=""
+              width="200"
+              height="100"
             />
 
             <h1 className="mt-10 text-3xl font-bold text-center text-gray-900  sm:text-4xl xl:text-5xl font-pj lg:text-left">
@@ -216,9 +225,6 @@ export default function Login() {
                   <div className="w-full h-full mx-auto opacity-30 blur-lg filter"></div>
                 </div>
 
-                {loginCredsWrong  && (
-                  <p className="text-red-500 text-lg">Wrong Credentials</p>
-                )}
                 <button
                   type="submit"
                   disabled={loading}
@@ -266,7 +272,9 @@ export default function Login() {
 
             <blockquote className="mt-14">
               <p className="text-2xl font-medium leading-relaxed text-white lg:text-3xl font-pj">
-                “CompanyVerse transformed how we manage teams, permissions, and daily operations — everything now feels centralized and seamless.”
+                “CompanyVerse transformed how we manage teams, permissions, and
+                daily operations — everything now feels centralized and
+                seamless.”
               </p>
             </blockquote>
 

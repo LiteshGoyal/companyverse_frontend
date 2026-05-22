@@ -4,10 +4,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { signupUser } from "@/services/auth.service";
+import { toast } from "sonner";
 
 export default function SignupPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const [formData, setFormData] = useState({
     username: "",
@@ -25,13 +27,25 @@ export default function SignupPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    if (formData.username.includes(" ")) {
+      toast.error("Please enter a valid username. Username can only contain alphabets, numbers and special characters, not spaces.");
+
+      return;
+    }
+
     try {
       setLoading(true);
 
       await signupUser(formData);
 
       router.push("/auth/login");
-    } catch (error) {
+      toast.success("Account created successfully", {
+        description: "Welcome to CompanyVerse",
+      });
+    } catch (error: any) {
+      setError(
+        error?.response?.data?.error || "Failed to Signup. Please try again",
+      );
       console.log(error);
     } finally {
       setLoading(false);
@@ -162,6 +176,7 @@ export default function SignupPage() {
             <form onSubmit={handleSubmit} className="mt-5">
               <div className="space-y-5">
                 <div>
+                  {error && <p className="text-red-600">{error}</p>}
                   <label className="text-base font-medium text-gray-900">
                     {" "}
                     Username{" "}

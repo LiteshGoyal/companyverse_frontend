@@ -1,349 +1,3 @@
-// "use client";
-
-// import { useEffect, useState } from "react";
-
-// import ProtectedRoute from "@/app/components/ProtectedRoute";
-
-// import DashboardLayout from "@/app/components/dashboard/DashboardLayout";
-
-// import { getDashboardStats } from "@/services/dashboard.service";
-// import DashboardSkeletonLoader from "../components/Loading/loading";
-
-// export default function DashboardPage() {
-//   const [stats, setStats] = useState<any>(null);
-
-//   const [loading, setLoading] = useState(true);
-
-//   useEffect(() => {
-//     const fetchStats = async () => {
-//       try {
-//         const data = await getDashboardStats();
-
-//         setStats(data);
-//       } catch (error) {
-//         console.log(error);
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchStats();
-//   }, []);
-
-//   if (loading) {
-//     return (
-//       <ProtectedRoute>
-//         <DashboardLayout>
-//           <DashboardSkeletonLoader />
-//         </DashboardLayout>
-//       </ProtectedRoute>
-//     );
-//   }
-
-//   const isAdminDashboard = stats?.dashboard_type === "ADMIN";
-
-//   return (
-//     <ProtectedRoute>
-//       <DashboardLayout>
-//         <div
-//           className="
-//                     flex
-//                     items-center
-//                     justify-between
-//                     mb-8
-//                 "
-//         >
-//           <div>
-//             <h1
-//               className="
-//                             text-4xl
-//                             font-bold
-//                         "
-//             >
-//               Dashboard
-//             </h1>
-
-//             <p
-//               className="
-//                             text-gray-600
-//                             mt-2
-//                         "
-//             >
-//               Operational overview of your company
-//             </p>
-//           </div>
-//         </div>
-
-//         {isAdminDashboard && (
-//           <div
-//             className="
-//                     grid
-//                     md:grid-cols-3
-//                     gap-6
-//                 "
-//           >
-//             <div
-//               className="
-//                         bg-white
-//                         p-6
-//                         rounded-lg
-//                         shadow
-//                     "
-//             >
-//               <p
-//                 className="
-//                             text-gray-500
-//                         "
-//               >
-//                 Employees
-//               </p>
-
-//               <h2
-//                 className="
-//                             text-4xl
-//                             font-bold
-//                             mt-3
-//                         "
-//               >
-//                 {stats?.employees || 0}
-//               </h2>
-//             </div>
-
-//             <div
-//               className="
-//                         bg-white
-//                         p-6
-//                         rounded-lg
-//                         shadow
-//                     "
-//             >
-//               <p
-//                 className="
-//                             text-gray-500
-//                         "
-//               >
-//                 Pending Tasks
-//               </p>
-
-//               <h2
-//                 className="
-//                             text-4xl
-//                             font-bold
-//                             mt-3
-//                             text-yellow-600
-//                         "
-//               >
-//                 {stats?.pending_tasks || 0}
-//               </h2>
-//             </div>
-
-//             <div
-//               className="
-//                         bg-white
-//                         p-6
-//                         rounded-lg
-//                         shadow
-//                     "
-//             >
-//               <p
-//                 className="
-//                             text-gray-500
-//                         "
-//               >
-//                 Completed Tasks
-//               </p>
-
-//               <h2
-//                 className="
-//                             text-4xl
-//                             font-bold
-//                             mt-3
-//                             text-green-600
-//                         "
-//               >
-//                 {stats?.completed_tasks || 0}
-//               </h2>
-//             </div>
-
-//             <div
-//               className="
-//                         bg-white
-//                         p-6
-//                         rounded-lg
-//                         shadow
-//                     "
-//             >
-//               <p
-//                 className="
-//                             text-gray-500
-//                         "
-//               >
-//                 Requirements
-//               </p>
-
-//               <h2
-//                 className="
-//                             text-4xl
-//                             font-bold
-//                             mt-3
-//                         "
-//               >
-//                 {stats?.requirements || 0}
-//               </h2>
-//             </div>
-
-//             <div
-//               className="
-//                         bg-white
-//                         p-6
-//                         rounded-lg
-//                         shadow
-//                     "
-//             >
-//               <p
-//                 className="
-//                             text-gray-500
-//                         "
-//               >
-//                 Unread Notifications
-//               </p>
-
-//               <h2
-//                 className="
-//                             text-4xl
-//                             font-bold
-//                             mt-3
-//                             text-blue-600
-//                         "
-//               >
-//                 {stats?.unread_notifications || 0}
-//               </h2>
-//             </div>
-
-//             <div
-//               className="
-//                         bg-white
-//                         p-6
-//                         rounded-lg
-//                         shadow
-//                     "
-//             >
-//               <p
-//                 className="
-//                             text-gray-500
-//                         "
-//               >
-//                 Average Rating
-//               </p>
-
-//               <h2
-//                 className="
-//                             text-4xl
-//                             font-bold
-//                             mt-3
-//                         "
-//               >
-//                 {stats?.average_rating || "N/A"}
-//               </h2>
-//             </div>
-//           </div>
-//         )}
-//         {!isAdminDashboard && (
-//           <div
-//             className="
-//     grid
-//     md:grid-cols-3
-//     gap-6
-// "
-//           >
-//             <div
-//               className="
-//         bg-white
-//         p-6
-//         rounded-lg
-//         shadow
-//     "
-//             >
-//               <p
-//                 className="
-//             text-gray-500
-//         "
-//               >
-//                 My Tasks
-//               </p>
-
-//               <h2
-//                 className="
-//             text-4xl
-//             font-bold
-//             mt-3
-//         "
-//               >
-//                 {stats?.my_tasks || 0}
-//               </h2>
-//             </div>
-
-//             <div
-//               className="
-//         bg-white
-//         p-6
-//         rounded-lg
-//         shadow
-//     "
-//             >
-//               <p
-//                 className="
-//             text-gray-500
-//         "
-//               >
-//                 Pending Tasks
-//               </p>
-
-//               <h2
-//                 className="
-//             text-4xl
-//             font-bold
-//             mt-3
-//             text-yellow-600
-//         "
-//               >
-//                 {stats?.pending_tasks || 0}
-//               </h2>
-//             </div>
-
-//             <div
-//               className="
-//         bg-white
-//         p-6
-//         rounded-lg
-//         shadow
-//     "
-//             >
-//               <p
-//                 className="
-//             text-gray-500
-//         "
-//               >
-//                 Completed Tasks
-//               </p>
-
-//               <h2
-//                 className="
-//             text-4xl
-//             font-bold
-//             mt-3
-//             text-green-600
-//         "
-//               >
-//                 {stats?.completed_tasks || 0}
-//               </h2>
-//             </div>
-//           </div>
-//         )}
-//       </DashboardLayout>
-//     </ProtectedRoute>
-//   );
-// }
 "use client";
 
 import { useEffect, useState } from "react";
@@ -364,6 +18,8 @@ import {
 import { getDashboardStats } from "@/services/dashboard.service";
 
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
+import DashboardSkeletonLoader from "../components/Loading/loading";
+import Link from "next/link";
 
 export default function DashboardPage() {
   const [stats, setStats] = useState<any>(null);
@@ -390,14 +46,7 @@ export default function DashboardPage() {
     return (
       <ProtectedRoute>
         <DashboardLayout>
-          <p
-            className="
-              text-lg
-              font-medium
-            "
-          >
-            Loading dashboard...
-          </p>
+            <DashboardSkeletonLoader />
         </DashboardLayout>
       </ProtectedRoute>
     );
@@ -447,8 +96,26 @@ export default function DashboardPage() {
                   mt-2
                 "
               >
-                Here's what's happening in your workspace today.
+                Here&apos;s what&apos;s happening in your workspace today.
               </p>
+            </div>
+            <div className=" border p-2 rounded-xl cursor-pointer hover:scale-110 transition-transform duration-300">
+              <Link href="/notifications">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0"
+                  />
+                </svg>
+              </Link>
             </div>
           </div>
 

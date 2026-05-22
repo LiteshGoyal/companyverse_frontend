@@ -1,10 +1,25 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 export default function Hero() {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    // Small timeout ensures the DOM renders before the transition kicks off
+    const timer = setTimeout(() => setIsMounted(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 return(
     
       <section className="relative py-12 overflow-hidden bg-black sm:pb-16 lg:pb-20 xl:pb-24">
         <div className="px-4 mx-auto relativea sm:px-6 lg:px-8 max-w-7xl">
           <div className="grid items-center grid-cols-1 gap-y-12 lg:grid-cols-2 gap-x-16">
-            <div>
+            <div className={` transition-all duration-700 ease-out
+                ${
+                  isMounted
+                    ? "translate-x-0 opacity-100"
+                    : "-translate-x-20 opacity-0"
+                }`}>
               <h1 className="text-4xl font-normal text-white sm:text-5xl lg:text-6xl xl:text-7xl">
                 Where Companies Meet Exceptional Talent
 
