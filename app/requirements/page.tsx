@@ -99,48 +99,24 @@ export default function RequirementsPage() {
 
               <div className="mt-4 space-y-2">
                 <p>
-                  <span className="font-semibold">Skills:</span>{" "}
+                  <span className="font-semibold">Skills needed:</span>{" "}
                   {requirement.required_skills}
                 </p>
-
                 <p>
-                  <span className="font-semibold">Experience:</span>{" "}
+                  <span className="font-semibold">Experience required:</span>{" "}
                   {requirement.experience_required} years
                 </p>
-
-                
-                  <span className="font-semibold">Status:</span>{" "}
-                  <div className="mt-4">
-                    <span
-                      className={`
-            px-3
-            py-1
-            rounded-full
-            text-sm
-            font-medium
-
-            ${requirement.status === "OPEN" && "bg-green-200 text-green-800"}
-
-            ${requirement.status === "CLOSED" && "bg-red-200 text-red-800"}
-        `}
-                    >
-                      {requirement.status}
-                    </span>
-                  </div>
-                
+                <span className="font-semibold">Status:</span>{" "}
+                {/* <div className="mt-4"> */}
+                  <span
+                    className={` px-3 py-1 rounded-full text-sm font-medium ${requirement.status === "OPEN" && "bg-green-200 text-green-800"} ${requirement.status === "CLOSED" && "bg-red-200 text-red-800"} `}
+                  >
+                    {requirement.status}
+                  </span>
               </div>
               <Link
                 href={`/requirements/${requirement.id}/responses`}
-                className="
-        inline-block
-        mt-5
-        px-4
-        py-2
-        bg-black
-        text-white
-        rounded-lg
-        hover:bg-gray-800
-    "
+                className=" inline-block  mt-5 mr-2 px-4 py-2 bg-black text-white rounded-lg  hover:bg-gray-800 "
               >
                 View Responses
               </Link>
@@ -148,15 +124,7 @@ export default function RequirementsPage() {
               {requirement.status !== "CLOSED" && (
                 <button
                   onClick={() => handleCloseRequirement(requirement.id)}
-                  className="
-            ml-3
-            px-4
-            py-2
-            bg-red-600
-            text-white
-            rounded-lg
-            hover:bg-red-700
-        "
+                  className="mt-2 md:mt-0  px-4  py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 "
                 >
                   Close Requirement
                 </button>

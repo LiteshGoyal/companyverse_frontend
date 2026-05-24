@@ -12,6 +12,7 @@ import {
   updateRequirementResponseStatus,
 } from "@/services/requirement.service";
 import DashboardSkeletonLoader from "@/app/components/Loading/loading";
+import { toast } from "sonner";
 
 export default function RequirementResponsesPage() {
   const params = useParams();
@@ -38,7 +39,7 @@ export default function RequirementResponsesPage() {
 
   const handleUpdateStatus = async (responseId: number, status: string) => {
     try {
-      await updateRequirementResponseStatus(responseId, status);
+      const updatedResponse = await updateRequirementResponseStatus(responseId, status);
 
       setResponses((prevResponses: any) =>
         prevResponses.map((response: any) =>
@@ -46,10 +47,12 @@ export default function RequirementResponsesPage() {
             ? {
                 ...response,
                 status,
+                contact_email: updatedResponse.contact_email
               }
             : response,
         ),
       );
+      toast.success("Requirement status updated to \"CLOSE\"")
     } catch (error) {
       console.log(error);
     }
@@ -148,7 +151,7 @@ export default function RequirementResponsesPage() {
               {response.status === "PENDING" && (
                 <div className="flex gap-3 mt-5">
                   <button
-                    onClick={() => handleUpdateStatus(response.id, "ACCEPTED")}
+                    onClick={() => {handleUpdateStatus(response.id, "ACCEPTED"); window.location.reload();}}
                     className="
               px-4
                 py-2

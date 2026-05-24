@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 import { getCompanyEmployees } from "@/services/company.service";
 import { respondToRequirement } from "@/services/requirement.service";
+import { toast } from "sonner";
 
 export default function RespondRequirementPage() {
   const params = useParams();
@@ -41,10 +42,12 @@ export default function RespondRequirementPage() {
         employee: selectedEmployee,
         message,
       });
-      alert("Response successfully submitted");
+      // alert("Response successfully submitted");
       router.push("/marketplace");
+      toast.success("Response submitted");
     } catch (error: any) {
-      setError(error?.response?.data?.error || "Failed to submit response");
+      // setError(error?.response?.data?.error || "Failed to submit response");
+      toast.error(error?.response?.data?.error || "Failed to submit response");
     } finally {
       setSubmitting(false);
     }
@@ -54,7 +57,6 @@ export default function RespondRequirementPage() {
     <ProtectedRoute>
       <DashboardLayout>
         <h1 className="text-3xl font-bold mb-6">Respond To Requirement</h1>
-        <p>Requirement ID: {params.id}</p>
 
         <div className="mt-6">
           <label htmlFor="" className="block mb-2 font-semibold">
@@ -95,7 +97,6 @@ export default function RespondRequirementPage() {
         "
           />
         </div>
-        {error && <p className="mt-4 text-red-500">{error}</p>}
 
         <button
           onClick={handleSubmitResponse}

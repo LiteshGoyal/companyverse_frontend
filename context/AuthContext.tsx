@@ -2,6 +2,7 @@
 
 import { getCurrentUser } from "@/services/auth.service";
 import { createContext, useState, ReactNode, useEffect } from "react";
+import { toast } from "sonner";
 
 type AuthContextType = {
   accessToken: string | null;
@@ -36,6 +37,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const logout = () => {
     localStorage.removeItem("token");
     setAccessToken(null);
+    toast.success("See you soon")
   };
 
   return (
