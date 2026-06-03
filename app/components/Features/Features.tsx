@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 const Features = () => {
   const features = [
     {
-      title: "Smart Hiring",
-      desc: "Find skilled professionals and connect with the right talent faster.",
+      title: "Task & Project Tracking",
+      desc: "Assign tasks, set deadlines, and keep projects moving efficiently.",
       icon: (
         <svg
           className="w-8 h-8 text-white"

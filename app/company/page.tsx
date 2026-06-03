@@ -3,9 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import DashboardLayout from "@/app/components/dashboard/DashboardLayout";
-import ProtectedRoute from "@/app/components/ProtectedRoute";
-
 import { Building2, Plus, Users } from "lucide-react";
 
 import axios from "axios";
@@ -18,15 +15,15 @@ export default function CompaniesPage() {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const token = localStorage.getItem("token");
+        // const token = localStorage.getItem("token");
 
         const response = await axios.get(
           `${process.env.NEXT_PUBLIC_API_URL}/companies/`,
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          },
+          // {
+          //   headers: {
+          //     Authorization: `Bearer ${token}`,
+          //   },
+          // },
         );
 
         setCompanies(response.data);

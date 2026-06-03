@@ -41,7 +41,7 @@ const CTA = () => {
             viewport={{ once: true }}
             className="relative text-3xl font-normal text-white sm:text-4xl lg:text-5xl xl:text-6xl"
           >
-            Build Smarter Teams. Scale Faster.
+            Everything Your Company Needs to Operate and Grow
           </motion.h2>
 
           {/* Paragraph */}
@@ -55,9 +55,7 @@ const CTA = () => {
             viewport={{ once: true }}
             className="relative max-w-xl mx-auto mt-6 text-base font-normal text-gray-400 lg:text-lg sm:mt-8"
           >
-            Connect with skilled professionals, manage company operations, and
-            streamline hiring through a modern platform designed for growing
-            businesses and startups.
+           Manage employees, assign tasks, track progress, monitor performance, collaborate across teams, and streamline daily operations—all from one powerful platform designed for modern organizations.
           </motion.p>
 
           {/* Button */}

@@ -12,27 +12,33 @@ const FAQ = () => {
   const faqs = [
     {
       id: 1,
-      question: "How is CompanyVerse different from other platforms?",
+      question: "What is CompanyVerse?",
       answer:
-        "CompanyVerse helps companies connect with developers, managers, and professionals through a modern platform designed for collaboration, hiring, and business growth.",
+        "CompanyVerse is a collaborative workspace designed for companies to manage employees, tasks, deadlines, work logs, performance reviews, and internal communication from a single platform.",
     },
     {
       id: 2,
-      question: "How long do you provide support?",
+      question: "Who can use CompanyVerse?",
       answer:
-        "We provide continuous support and platform updates to ensure companies and professionals have the best possible experience.",
+        "CompanyVerse is built for startups, small businesses, agencies, remote teams, and enterprises looking to streamline team management and collaboration.",
     },
     {
       id: 3,
-      question: "Can startups use CompanyVerse?",
+      question: "How does CompanyVerse help teams collaborate?",
       answer:
-        "Yes, startups, enterprises, recruiters, and professionals can all use CompanyVerse to build connections and grow faster.",
+        "Teams can assign tasks, track progress, manage deadlines, share updates, review employee performance, and maintain work logs in one centralized system.",
     },
     {
       id: 4,
-      question: "What features are included?",
+      question: "Is CompanyVerse suitable for remote teams?",
       answer:
-        "CompanyVerse includes company profiles, professional networking, hiring tools, dashboards, messaging, and collaboration features.",
+        "Absolutely. CompanyVerse is designed to support both remote and in-office teams with centralized collaboration and task management tools.",
+    },
+    {
+      id: 5,
+      question: "What makes CompanyVerse different?",
+      answer:
+        "Unlike traditional project management tools, CompanyVerse focuses on both company operations and employee growth by combining collaboration, performance management, recognition, and productivity tracking in one platform.",
     },
   ];
 

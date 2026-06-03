@@ -12,6 +12,7 @@ import DashboardLayout from "@/app/components/dashboard/DashboardLayout";
 import { getCurrentUser } from "@/services/auth.service";
 import { createCompany } from "@/services/company.service";
 
+import { toast } from "sonner";
 export default function CreateCompanyPage() {
   const auth = useContext(AuthContext);
   const router = useRouter();
@@ -43,7 +44,16 @@ export default function CreateCompanyPage() {
       auth?.setUser(updatedUser);
 
       router.push("/dashboard");
-    } catch (error) {
+    } catch (error : any) {
+      if (error?.response?.status === 400) {
+        toast.error("You already belong to a company", {
+          description: "You cannot create a company while you are a member already",
+        });
+      } else {
+        toast.error("Creating failed", {
+          description: "Something went wrong. Please try again later.",
+        });
+      }
       console.log(error);
     } finally {
       setLoading(false);

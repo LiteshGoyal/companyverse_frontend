@@ -74,9 +74,9 @@ export default function Hero() {
               }}
               className="text-4xl font-normal leading-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl"
             >
-              Where Companies Meet{" "}
+              Where Companies{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-                Exceptional Talent
+                Build Better Together
               </span>
             </motion.h1>
 
@@ -90,10 +90,7 @@ export default function Hero() {
               }}
               className="mt-6 text-lg leading-8 text-gray-400 sm:mt-8"
             >
-              Connecting companies with skilled professionals, developers,
-              managers, and industry experts through one intelligent platform
-              designed to simplify hiring, collaboration, networking, and
-              long-term business growth for modern organizations.
+              Empower your organization with a unified workspace for employee management, task tracking, performance reviews, communication, and seamless collaboration. CompanyVerse helps teams stay aligned, productive, and focused on achieving business goals.
             </motion.p>
 
             {/* Ratings */}
